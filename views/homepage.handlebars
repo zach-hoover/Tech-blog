@@ -1,0 +1,31 @@
+<!-- Loop over each object in the projects array -->
+{{#each blogs as |blog| }}
+<div class="row mb-4 blog">
+  <div class="col-md-5">
+    <h2>
+      <a href="/{{blog.id}}">{{blog.title}}</a>
+    </h2>
+    <p>
+      <!-- Pass needed_funding value to the helper function -->
+      Created by {{blog.User.name}} on {{format_date blog.date_created}}
+    </p>
+    <p></p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{blog.post}}
+    </p>
+  </div>
+    <ul class="comments-list">
+      {{#each blog.Comments as |comment|}}
+        <li>
+          <span>{{comment.User.name}}:</span>
+          <span class="comment-text">{{comment.comment}}</span>
+        </li>
+      {{/each}}
+    </ul>
+  <button type="button" class="btn btn-primary">Add Comment</button> 
+</div>
+{{/each}}
+
+
